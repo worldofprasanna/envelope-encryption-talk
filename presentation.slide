@@ -1,0 +1,27 @@
+Envelope Encryption
+What ? How ? Why ?
+6 Sep 2018
+Tags: envelope-encryption, go, kms
+
+Prasanna V
+
+* How secure is this ?
+
+.image images/encryption-1.png _ 700
+
+*Problems*
+
+- How to protect the encryption key ?
+- What if the key is stolen ?
+
+* Envelope encryption to the rescue
+
+.image images/rescue.gif _ 700
+
+* Envelope encryption using AWS KMS
+
+.image images/envelope-encryption.png _ 700
+
+* Demo time
+
+.play -edit src/sources/here-you-.go /PLAIN_TEXT_START_OMIT/,/PLAIN_TEXT_END_OMIT/
