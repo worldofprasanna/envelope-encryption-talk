@@ -3,12 +3,12 @@ package main
 import (
   "github.com/aws/aws-sdk-go/service/kms"
   "encoding/base64"
-  "encoding/gob"
-  "bytes"
   "fmt"
   "golang.org/x/crypto/nacl/secretbox"
   "github.com/aws/aws-sdk-go/aws/session"
   "github.com/aws/aws-sdk-go/aws"
+  "encoding/gob"
+  "bytes"
 )
 
 func main() {

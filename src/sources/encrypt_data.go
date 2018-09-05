@@ -9,9 +9,9 @@ import (
   "encoding/base64"
   "fmt"
   "golang.org/x/crypto/nacl/secretbox"
+  "crypto/rand"
   "bytes"
   "encoding/gob"
-  "crypto/rand"
 )
 
 func main() {
@@ -69,7 +69,7 @@ func Encrypt(kmsClient *kms.KMS, plaintext []byte) ([]byte, error) {
 
   buf := &bytes.Buffer{}
   if err := gob.NewEncoder(buf).Encode(p); err != nil {
-    return nil, err
+   return nil, err
   }
 
   return buf.Bytes(), nil

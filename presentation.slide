@@ -24,11 +24,11 @@ Prasanna V
 
 * Demo time !!!
 
-*Encrypt*
+*Encrypt*Message*
 
 .play -edit src/sources/encrypt_data.go /ENCRYPT_STRING_START_OMIT/,/ENCRYPT_STRING_END_OMIT/
 
-*Decrypt*
+*Decrypt*Message*
 
 .play -edit src/sources/decrypt_data.go /DECRYPT_STRING_START_OMIT/,/DECRYPT_STRING_END_OMIT/
 
