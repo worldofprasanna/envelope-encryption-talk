@@ -2,7 +2,7 @@
 
 
 [[projects]]
-  digest = "1:55c1331fb71f26dc210bf3722ff3d2af61e6bfd5ec8cbac887a5da373c067b1b"
+  digest = "1:8d6e91e3609e123612df45c627815627330642bad2b91ae42f0de7ee893bc7ae"
   name = "github.com/aws/aws-sdk-go"
   packages = [
     "aws",
@@ -27,10 +27,13 @@
     "internal/sdkuri",
     "internal/shareddefaults",
     "private/protocol",
+    "private/protocol/json/jsonutil",
+    "private/protocol/jsonrpc",
     "private/protocol/query",
     "private/protocol/query/queryutil",
     "private/protocol/rest",
     "private/protocol/xml/xmlutil",
+    "service/kms",
     "service/sts",
   ]
   pruneopts = "UT"
@@ -52,9 +55,27 @@
   pruneopts = "UT"
   revision = "0b12d6b5"
 
+[[projects]]
+  branch = "master"
+  digest = "1:a68068595227881a09dd5961976ddf705c8eea822dcd1c7b57bbb0067335ad32"
+  name = "golang.org/x/crypto"
+  packages = [
+    "internal/subtle",
+    "nacl/secretbox",
+    "poly1305",
+    "salsa20/salsa",
+  ]
+  pruneopts = "UT"
+  revision = "0709b304e793a5edb4a2c0145f281ecdc20838a4"
+
 [solve-meta]
   analyzer-name = "dep"
   analyzer-version = 1
-  input-imports = ["github.com/aws/aws-sdk-go/aws/session"]
+  input-imports = [
+    "github.com/aws/aws-sdk-go/aws",
+    "github.com/aws/aws-sdk-go/aws/session",
+    "github.com/aws/aws-sdk-go/service/kms",
+    "golang.org/x/crypto/nacl/secretbox",
+  ]
   solver-name = "gps-cdcl"
   solver-version = 1

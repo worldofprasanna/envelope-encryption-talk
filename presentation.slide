@@ -22,6 +22,12 @@ Prasanna V
 
 .image images/envelope-encryption.png _ 700
 
-* Demo time
+* Demo time !!!
 
-.play -edit src/sources/here-you-.go /PLAIN_TEXT_START_OMIT/,/PLAIN_TEXT_END_OMIT/
+*Encrypt*
+
+.play -edit src/sources/encrypt_data.go /ENCRYPT_STRING_START_OMIT/,/ENCRYPT_STRING_END_OMIT/
+
+*Decrypt*
+
+.play -edit src/sources/decrypt_data.go /DECRYPT_STRING_START_OMIT/,/DECRYPT_STRING_END_OMIT/
