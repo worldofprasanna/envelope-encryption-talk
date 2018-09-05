@@ -5,6 +5,9 @@ Tags: envelope-encryption, go, kms
 
 Prasanna V
 
+---
+*Source*code:* _https://github.com/worldofprasanna/envelope-encryption-talk_
+
 * How secure is this ?
 
 .image images/encryption-1.png _ 700
@@ -45,7 +48,7 @@ Prasanna V
 
 * Decryption - Explanation
 
-*Get*Data*Key*to*Decrypt*
+*Decrypt*Data*Key*
 .code src/sources/decrypt_data.go /GET_DECRYPT_DATAKEY_START_OMIT/,/GET_DECRYPT_DATAKEY_END_OMIT/
 
 *Decrypt*CipherText*
