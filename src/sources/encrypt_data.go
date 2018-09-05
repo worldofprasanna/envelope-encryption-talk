@@ -21,8 +21,10 @@ func main() {
 }
 
 func EncryptString(plainText string) string {
+  // KMS_INIT_START_OMIT
   sess := session.Must(session.NewSession())
   kmsClient := kms.New(sess, aws.NewConfig().WithRegion("us-east-1"))
+  // KMS_INIT_END_OMIT
   plainByteArray, _ := ioutil.ReadAll(strings.NewReader(plainText))
 
   encrypted, err := Encrypt(kmsClient, plainByteArray) // <-- to be implemented
@@ -35,16 +37,14 @@ func EncryptString(plainText string) string {
 }
 
 func Encrypt(kmsClient *kms.KMS, plaintext []byte) ([]byte, error) {
-  // Generate data key
-
-  //provide either the key's arn OR its alias, as shown below:
-  //keyId := "arn:aws:kms:us-east-1:779993255822:key/bb1a147c-8600-4558-910d-8b841c8f7493"
+  // CREATE_DATA_KEY_START_OMIT
   keyId := "alias/test-kms"
   keySpec := "AES_128"
   dataKeyInput := kms.GenerateDataKeyInput{KeyId: &keyId, KeySpec: &keySpec}
 
   dataKeyOutput, err := kmsClient.GenerateDataKey(&dataKeyInput)
-  if err == nil { // dataKeyOutput is now filled
+  // CREATE_DATA_KEY_END_OMIT
+  if err == nil {
     fmt.Println(dataKeyOutput)
   } else {
     fmt.Println("error: ", err)
@@ -61,12 +61,11 @@ func Encrypt(kmsClient *kms.KMS, plaintext []byte) ([]byte, error) {
     return nil, err
   }
 
-  // Create key
+  // ENCRYPT_START_OMIT
   key := &[encryptKeyLength]byte{}
   copy(key[:], dataKeyOutput.Plaintext)
-
-  // Encrypt message
   p.Message = secretbox.Seal(p.Message, plaintext, p.Nonce, key)
+  // ENCRYPT_END_OMIT
 
   buf := &bytes.Buffer{}
   if err := gob.NewEncoder(buf).Encode(p); err != nil {

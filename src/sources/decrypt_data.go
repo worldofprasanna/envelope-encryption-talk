@@ -13,7 +13,7 @@ import (
 
 func main() {
   // DECRYPT_STRING_START_OMIT
-  DecryptString(`Looooong encoded string`)
+  DecryptString(`Looooong encrypted string`)
   // DECRYPT_STRING_END_OMIT
 }
 
@@ -34,24 +34,23 @@ func Decrypt(kmsClient *kms.KMS, ciphertext string) ([]byte, error) {
   var p decryptPayload
   gob.NewDecoder(bytes.NewReader(cipherText)).Decode(&p)
 
-  //Decrypt a ciphertext that was previously encrypted.
-  //Note that we dont actually specify the key name.
-  //I guess the ciphertext already encodes it?
+  //GET_DECRYPT_DATAKEY_START_OMIT
   dataKeyOutput, err := kmsClient.Decrypt(&kms.DecryptInput{
     CiphertextBlob: p.Key,
   })
+  //GET_DECRYPT_DATAKEY_END_OMIT
   if err == nil { // dataKeyOutput is now filled
     fmt.Println(dataKeyOutput)
   } else {
     fmt.Println("error: ", err)
   }
 
+  //DECRYPT_START_OMIT
   key := &[decryptKeyLength]byte{}
   copy(key[:], dataKeyOutput.Plaintext)
-
-  // Decrypt message
   var plaintext []byte
   plaintext, ok := secretbox.Open(plaintext, p.Message, p.Nonce, key)
+  //DECRYPT_END_OMIT
   if !ok {
     return nil, fmt.Errorf("Failed to open secretbox")
   }

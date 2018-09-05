@@ -31,3 +31,23 @@ Prasanna V
 *Decrypt*
 
 .play -edit src/sources/decrypt_data.go /DECRYPT_STRING_START_OMIT/,/DECRYPT_STRING_END_OMIT/
+
+* Encryption - Explanation
+
+*KMS*Initialization*
+.code src/sources/encrypt_data.go /KMS_INIT_START_OMIT/,/KMS_INIT_END_OMIT/
+
+*Generate*Data*Key*from*CMK*
+.code src/sources/encrypt_data.go /CREATE_DATA_KEY_START_OMIT/,/CREATE_DATA_KEY_END_OMIT/
+
+*Encrypt*Message*
+.code src/sources/encrypt_data.go /ENCRYPT_START_OMIT/,/ENCRYPT_END_OMIT/
+
+* Decryption - Explanation
+
+*Get*Data*Key*to*Decrypt*
+.code src/sources/decrypt_data.go /GET_DECRYPT_DATAKEY_START_OMIT/,/GET_DECRYPT_DATAKEY_END_OMIT/
+
+*Decrypt*CipherText*
+.code src/sources/decrypt_data.go /DECRYPT_START_OMIT/,/DECRYPT_END_OMIT/
+
